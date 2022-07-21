@@ -2,6 +2,11 @@
   "author": "Marco Calixte",
   "name": "fcc-learn-npm-package-json",
   "description": "A web app to learn npm packages",
+  "keywords": [
+    "Marco Calixte",
+    "freecodecamp",
+    "Learn more about npm packages"
+  ],
   "dependencies": {
     "express": "^4.14.0"
   },
