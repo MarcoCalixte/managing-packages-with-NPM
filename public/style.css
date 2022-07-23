@@ -20,6 +20,7 @@ body {
 ol {
 	list-style-position: inside;
 }
+
 ul {
 	list-style-type: none;
 }
@@ -27,9 +28,19 @@ ul {
 a {
 	color: #2574A9;
 }
+
 /****** Logo Div Styling ******/
 
 img {
 	margin: 20px auto 0 auto;
 	display: block;
+}
+
+h1 {
+	font-size: 4em;
+}
+
+input[type=text],
+label {
+	margin-bottom: 8px;
 }
