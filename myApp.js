@@ -25,17 +25,15 @@ app.use('/public', express.static(__dirname + "/public")) // add static for asse
 
 //Use the .env file to configure the app
 app.get("/json", (req, res) => {
-    console.log(process.env.MESSAGE_STYLE, " <= message style")
+    let jsonResponse = {
+        "message": "Hello json"
+    };
 
     if (process.env.MESSAGE_STYLE === "uppercase") {
-        res.json({
-            "message": "HELLO JSON"
-        })
-    } else {
-        res.json({
-            "message": "HELLO json"
-        })
+        jsonResponse.message = jsonResponse.message.toUpperCase()
     }
+
+    res.json(jsonResponse);
 })
 
 
