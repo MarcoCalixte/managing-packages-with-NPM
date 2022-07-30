@@ -1,9 +1,17 @@
-//Meet the node console
+//calling the common.js module
 let express = require('express');
 let app = express();
 var bGround = require('fcc-express-bground');
 require('dotenv').config()
 
+
+//middleware function at root level
+app.use((req, res, next) => {
+    console.log(req.method + " " + req.path + " - " + req.ip)
+    next();
+})
+
+//Meet the node console
 bGround.log('Hello World')
 console.log('Hello World')
 
