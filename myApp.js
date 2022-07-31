@@ -1,7 +1,7 @@
 //calling the common.js module
 let express = require('express');
 let app = express();
-var bGround = require('fcc-express-bground');
+let bGround = require('fcc-express-bground');
 require('dotenv').config()
 
 
