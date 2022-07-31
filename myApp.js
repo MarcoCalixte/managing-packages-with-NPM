@@ -1,17 +1,17 @@
-//calling the common.js module
+//calling the common.js module//
 let express = require('express');
 let app = express();
 let bGround = require('fcc-express-bground');
 require('dotenv').config()
 
 
-//middleware function at root level
+//middleware function at root level//
 app.use((req, res, next) => {
     console.log(req.method + " " + req.path + " - " + req.ip)
     next();
 })
 
-//Meet the node console
+//Meet the node console//
 bGround.log('Hello World')
 console.log('Hello World')
 
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/views/index.html")
 })
 
-//serve static assets
+//serve static assets//
 app.use(express.static(__dirname + "/public"))
 app.use('/public', express.static(__dirname + "/public")) // add static for assets
 
@@ -31,7 +31,7 @@ app.use('/public', express.static(__dirname + "/public")) // add static for asse
 //     })
 // })
 
-//Use the .env file to configure the app
+//Use the .env file to configure the app//
 app.get("/json", (req, res) => {
     let jsonResponse = {
         "message": "Hello json"
@@ -43,6 +43,21 @@ app.get("/json", (req, res) => {
 
     res.json(jsonResponse);
 })
+
+//Chaining Middleware. A time server//
+function getTheCurrentTimeString() {
+    return new Date().toString();
+}
+app.get("/now", (req, res, next) => {
+    req.time = getTheCurrentTimeString();
+    next();
+}, (req, res) => {
+    res.json({
+        time: req.time
+    })
+})
+
+
 
 
 
