@@ -57,11 +57,20 @@ app.get("/now", (req, res, next) => {
     })
 })
 
-//Get Route Parameter Input from the Client
+//Get Route Parameter Input from the Client//
 app.get("/:word/echo", (req, res) => {
     res.json({
         echo: req.params.word
     })
+})
+
+//Get Query Parameter Input from the Client//
+//first=firstname&last=lastname//
+app.get("/name", (req, res) => {
+    res.json({
+        name: req.query.first + " " + req.query.last
+    })
+    // JSON response to get the first name and last name from the API server
 })
 
 
