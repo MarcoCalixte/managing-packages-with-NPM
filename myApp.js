@@ -12,15 +12,20 @@ app.use((req, res, next) => {
     next();
 })
 
-/* Mount the body-parser middleware * body-parser to Parse POST Requests */
-app.use(function (req, res, next) {
-    bodyParser.urlencoded({
-        extended: false
-    })
-    console.log(bodyParser);
-    next();
-})
+/* Mount the body-parser middleware * body-parser to Parse POST Requests\
+ */ //
+// parse application/x-www-form-urlencoded //
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
 
+app.use(bodyParser.json());
+
+app.get("/body-parser-info", function (req, res) {
+    res.json({
+        parsed: bodyParser
+    });
+});
 //Meet the node console//
 bGround.log('Hello World')
 console.log('Hello World')
