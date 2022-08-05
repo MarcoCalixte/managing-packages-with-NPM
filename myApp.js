@@ -3,11 +3,21 @@ let express = require('express');
 let app = express();
 let bGround = require('fcc-express-bground');
 require('dotenv').config()
+let bodyParser = require('body-parser')
 
 
 //middleware function at root level//
 app.use((req, res, next) => {
     console.log(req.method + " " + req.path + " - " + req.ip)
+    next();
+})
+
+/* Mount the body-parser middleware * body-parser to Parse POST Requests */
+app.use(function (req, res, next) {
+    bodyParser.urlencoded({
+        extended: false
+    })
+    console.log(bodyParser);
     next();
 })
 
@@ -72,37 +82,5 @@ app.get("/name", (req, res) => {
     })
     // JSON response to get the first name and last name from the API server
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = app;
