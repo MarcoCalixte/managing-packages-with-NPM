@@ -19,13 +19,9 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 
+//parse application/json
 app.use(bodyParser.json());
 
-app.get("/body-parser-info", function (req, res) {
-    res.json({
-        parsed: bodyParser
-    });
-});
 //Meet the node console//
 bGround.log('Hello World')
 console.log('Hello World')
@@ -86,6 +82,14 @@ app.get("/name", (req, res) => {
         name: req.query.first + " " + req.query.last
     })
     // JSON response to get the first name and last name from the API server
+})
+
+
+/*Get Data from POST Requests* */
+app.post("/name", function (req, res) {
+    res.json({
+        name: req.body.first + " " + req.body.last
+    })
 })
 
 module.exports = app;
